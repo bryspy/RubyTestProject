@@ -2,17 +2,17 @@ require 'dropbox_sdk'
 
 
 # Get your app key and secret from the Dropbox developer website
-  APP_KEY = '5l1ycd1q7yxf6js'
-  APP_SECRET = 'q1040czoixwiqds'
+  APP_KEY = 'key'
+  APP_SECRET = 'secret'
 
   flow = DropboxOAuth2FlowNoRedirect.new(APP_KEY, APP_SECRET)
 
-access_token = 'ADSSQtmZuQAAAAAAAAADiQzLIou8u97h8h8k1SSn5a2hEDo23lSEY5_xevufx9rQ'
+access_token = 'access_token'
 
   client = DropboxClient.new(access_token)
   puts "linked account:", client.account_info().inspect
 
-file = open('C:\Users\bikonomovski\Documents\BryanIkon.kdbx')
+file = open('path_to_keepass_kdbx')
 response = client.put_file('/backup.kdbx', file)
 
 

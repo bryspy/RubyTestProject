@@ -5,9 +5,10 @@ end
 
 def count_squares2(n)
   t = 0
-  (1..n).reverse_each {|x| t+= x**2}
+  (1..n).each {|x| t+= x**2}
   t
 end
+
 
 
 

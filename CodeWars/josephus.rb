@@ -1,0 +1,2 @@
+class Josephus
+end

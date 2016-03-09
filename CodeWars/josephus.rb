@@ -84,18 +84,17 @@ class Josephus
     n_items = Array.new
     size = items.size
 
-    l=k - 1
+    n = k - 1
     while n_items.size < size
-      if l < items.size
-        p "if #{l}"
-        p n_items << items[l]
-        l+=k
+      if n < items.size && n != items.size
+        p "if #{n}"
+        p n_items << items[n]
+        n+=k
       else
+        n = (n - items.size)
+        p "else #{n}"
         items.delete_if {|item| n_items.include?(item)}
-        l = (l - items.size) - 1
-        p "else #{l}"
-        p n_items << items[l]
-        l+=k
+        p items
       end
     end
 
@@ -110,7 +109,7 @@ class Test_Josephus < MiniTest::Test
     @j = Josephus.new
   end
 
-  def test_josephus
+  def test_josephus3
     assert_equal([1,2,3,4,5,6,7,8,9,10], @j.josephus3([1,2,3,4,5,6,7,8,9,10],1))
     assert_equal([2, 4, 6, 8, 10, 3, 7, 1, 9, 5], @j.josephus3([1,2,3,4,5,6,7,8,9,10],2))
     assert_equal(['e', 's', 'W', 'o', 'C', 'd', 'r', 'a'], @j.josephus3(["C","o","d","e","W","a","r","s"],4))
